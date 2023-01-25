@@ -1,0 +1,9 @@
+.vscode
+
+dist
+docs
+assets
+public
+node_modules
+
+**/*.d.ts
