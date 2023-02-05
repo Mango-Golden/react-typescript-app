@@ -3,9 +3,9 @@
     "eslint.enable": true,
     "editor.tabSize": 2,
     "editor.indentSize": "tabSize",
-    "editor.formatOnSave": false,
+    "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-        "source.fixAll": true
+        "source.fixAll": true,
     },
     "css.format.enable": true,
     "css.format.preserveNewLines": true,
@@ -19,16 +19,40 @@
     "css.lint.zeroUnits": "error",
     "css.lint.float": "error",
     "typescript.tsdk": "node_modules/typescript/lib",
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
     "[svg]": {
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": true,
         "editor.defaultFormatter": "DotJoshJohnson.xml"
     },
+    "[css]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "mrmlnc.vscode-csscomb"
+    },
+    "[less]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "mrmlnc.vscode-csscomb"
+    },
     "[scss]": {
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": true,
         "editor.defaultFormatter": "sibiraj-s.vscode-scss-formatter"
     },
     "[json]": {
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": true,
         "editor.quickSuggestions": {
             "strings": true
         },
@@ -38,7 +62,7 @@
         ]
     },
     "[babelrc]": {
-        "editor.formatOnSave": false,
+        "editor.formatOnSave": true,
         "editor.quickSuggestions": {
             "strings": true
         },
