@@ -3,6 +3,6 @@
  * @description 系统消息
  */
 
-export const DEFAULT_ERR_MSG = "服务器繁忙, 请稍后再试";
+export const DEFAULT_ERR_MSG = '服务器繁忙, 请稍后再试';
 
-export const ERROR_BOUNDARY_MSG = "哎呀, 页面崩溃了~";
+export const ERROR_BOUNDARY_MSG = '页面崩溃';

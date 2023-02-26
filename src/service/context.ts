@@ -5,11 +5,11 @@
 
 import { isNil } from 'lodash-es';
 
-import { isJSON } from './utils';
-import { RequestContextOptions } from './model';
+import { isPureObject } from '@utils/is-esm';
+import type { RequestContextOptions } from './model';
 
-function parse (api: string) {
-  const [ pathname, ...searchs ] = api.split('?');
+function parse(api: string) {
+  const [pathname, ...searchs] = api.split('?');
   const search = searchs.join('?');
   return { pathname, search };
 }
@@ -29,24 +29,29 @@ export default class FetchContext<T = unknown> {
   public response?: Response;
   /** 响应体 mime-type */
   public type?: string | null;
-  
-  constructor (api: string, options: RequestContextOptions = {}) {
+
+  constructor(api: string, options: RequestContextOptions = {}) {
     const { payload, ...params } = options;
     const { search, pathname } = parse(api);
-    
-    if (isNil(payload)) {
-      params.method = params.method ?? "GET";
-    } else if (payload instanceof URLSearchParams) {
+
+    if (isNil(payload))
+      params.method = params.method ?? 'GET';
+
+    if (payload instanceof URLSearchParams) {
       const string = `${payload}&${search}`;
-      params.method = params.method ?? "GET";
+      params.method = params.method ?? 'GET';
       this.search = new URLSearchParams(string);
-    } else {
-      params.method = params.method ?? "POST";
-      params.body = isJSON(payload) ? JSON.stringify(payload) : payload;
+    }
+
+    if (!params.method) {
+      params.method = 'POST';
+      params.body = isPureObject(payload)
+        ? JSON.stringify(payload)
+        : payload;
     }
 
     this.api = pathname;
     this.options = params;
-    this.src = `${pathname}${this.search ?? ''}`
+    this.src = `${pathname}${this.search ?? ''}`;
   }
 }

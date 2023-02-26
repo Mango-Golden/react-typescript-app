@@ -5,13 +5,13 @@
 
 export interface NameAvatarProps {
   /** 填充颜色(背景) */
-  fill?: string;
+  fill?: string
   /** 字体大小 */
-  size?: string;
+  size?: string
   /** 字体颜色 */
-  color?: string;
+  color?: string
   /** 用户名称 */
-  name?: string;
+  name?: string
 }
 
 const NameAvatar: React.FC<NameAvatarProps> = (props) => {
@@ -32,7 +32,7 @@ const NameAvatar: React.FC<NameAvatarProps> = (props) => {
         {name}
       </text>
     </svg>
-  )
-}
+  );
+};
 
 export default NameAvatar;

@@ -6,7 +6,7 @@
 const NotFound: React.FC = () => {
   return (
     <div>404 notfound</div>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;

@@ -3,14 +3,14 @@
  * @description react app render
  */
 
-import { createRoot } from "react-dom/client";
-import { QueryClientProvider } from 'react-query';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 
 import App from '@~/app';
-import { container, client } from '@~/initial';
+import { container } from '@~/initial';
 
 createRoot(container).render(
-  <QueryClientProvider client={client}>
+  <BrowserRouter >
     <App/>
-  </QueryClientProvider>
+  </BrowserRouter>,
 );

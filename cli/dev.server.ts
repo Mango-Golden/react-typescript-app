@@ -5,7 +5,7 @@
 
 import path from 'path';
 import webpack from 'webpack';
-import develop from 'webpack-dev-server';
+import Server from 'webpack-dev-server';
 import type { Configuration } from 'webpack-dev-server';
 
 import { dirname } from '@config';
@@ -30,7 +30,7 @@ const options: Configuration = {
 
 const compiler = webpack(config);
 
-const server = new develop(options, compiler);
+const server = new Server(options, compiler);
 
 process.once('exit', () => {
   server.close();

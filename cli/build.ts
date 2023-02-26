@@ -3,7 +3,7 @@
  * @description webpack build
  */
 
-import webpack from 'webpack'
+import webpack from 'webpack';
 
 import config from '@config/webpack/product.config';
 import { getCurrentTime } from '@utils/date';

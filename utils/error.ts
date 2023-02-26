@@ -5,11 +5,11 @@
 
 export interface ServiceErrorParams<EC extends number = number> {
   /** 错误码 */
-  code: EC;
+  code: EC
   /** HTTP状态码 */
-  status: number;
+  status: number
   /** 错误文本 */
-  message?: string;
+  message?: string
 }
 
 export class ServiceError<EC extends number = number> extends Error {
@@ -21,7 +21,7 @@ export class ServiceError<EC extends number = number> extends Error {
 
   message: string;
 
-  constructor (params: ServiceErrorParams<EC>) {
+  constructor(params: ServiceErrorParams<EC>) {
     const { defaultMsg } = ServiceError;
     const { status, code, message = defaultMsg } = params;
 

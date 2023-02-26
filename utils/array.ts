@@ -3,7 +3,7 @@
  * @description 数组工具方法
  */
 
-import { FlaseType } from "@models/common";
+import type { FlaseType } from '@utils/types';
 
 /** 过滤数据中的假值 */
 export function filterFalse<T extends Exclude<unknown, FlaseType> = unknown>(source: (T | FlaseType)[]) {

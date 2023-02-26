@@ -4,7 +4,7 @@
  */
 
 import path from 'path';
-import type { RuleSetRule, RuleSetUseItem, LoaderContext } from 'webpack';
+import type { LoaderContext, RuleSetRule, RuleSetUseItem } from 'webpack';
 
 import { dirname } from '@config';
 
@@ -22,7 +22,7 @@ const LoaderCss: RuleSetUseItem = {
   options: {
     importLoaders: 1,
     modules: {
-      exportLocalsConvention: "camelCaseOnly",
+      exportLocalsConvention: 'camelCaseOnly',
       auto: (resource: string) => {
         const relative = path.relative(dirname, resource);
         const isGlobal = resource.endsWith('.global.scss');
@@ -51,29 +51,29 @@ const LoaderCss: RuleSetUseItem = {
 
 export const SassRule: RuleSetRule = {
   test: /\.(sa|sc|c)ss$/,
-  use: ["style-loader", LoaderCss, "sass-loader"]
+  use: ['style-loader', LoaderCss, 'sass-loader'],
 };
 
 export const LessRule: RuleSetRule = {
   test: /\.less?$/,
-  use: ["style-loader", LoaderCss, LoaderLess]
+  use: ['style-loader', LoaderCss, LoaderLess],
 };
 
 export const SVGRule: RuleSetRule = {
   test: /\.svg$/i,
   issuer: /\.[jt]sx$/,
-  use: [{ loader: "@svgr/webpack", options: { icon: true } }]
+  use: [{ loader: '@svgr/webpack', options: { icon: true } }],
 };
 
 export const AssetsRule: RuleSetRule = {
   test: /\.(png|jpe?g|gif|webp)$/i,
   use: [{
-    loader: "file-loader",
+    loader: 'file-loader',
     options: {
-      outputPath: "static",
-      name: "[name].[ext]",
+      outputPath: 'static',
+      name: '[name].[ext]',
     },
-  }]
+  }],
 };
 
 export const TSRule: RuleSetRule = {
@@ -83,4 +83,4 @@ export const TSRule: RuleSetRule = {
   options: {
     cacheDirectory: true,
   },
-}
+};

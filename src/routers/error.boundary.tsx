@@ -6,17 +6,17 @@
 import { Component } from 'react';
 import { isNil } from 'lodash-es';
 
-import { SystemErrorCode } from '@constants/enums/system';
-import { ERROR_BOUNDARY_MSG } from '@constants/message';
-
-export type ErrorBoundaryState = {
-  error: unknown;
-  code?: SystemErrorCode;
-};
+export interface ErrorBoundaryState {
+  error: Error | null
+}
 
 export interface ErrorBoundaryProps {
-  render?: React.FC<{ error: unknown }>
-};
+  render?: React.FC<ErrorBoundaryState>
+}
+
+export function ErrorPage() {
+  return <h1>Something went wrong</h1>;
+}
 
 export default class ErrorBoundary extends Component<
   React.PropsWithChildren<ErrorBoundaryProps>,
@@ -26,21 +26,8 @@ export default class ErrorBoundary extends Component<
     error: null,
   };
 
-  static getErrorCode(error: unknown): SystemErrorCode | undefined {
-    if (!(error instanceof Error)) {
-      return SystemErrorCode.Unknown;
-    }
-
-    const { message } = error;
-    if (message.startsWith('Cannot find module')) {
-      return SystemErrorCode.NotFound;
-    }
-  }
-
-  static getDerivedStateFromError(error: unknown): ErrorBoundaryState {
-    const { getErrorCode } = ErrorBoundary;
-    const code = getErrorCode(error);
-    return { error, code };
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { error };
   }
 
   render() {
@@ -49,6 +36,6 @@ export default class ErrorBoundary extends Component<
     if (isNil(error)) return children;
 
     const { render } = this.props;
-    render?.({ error }) ?? <h1>{ERROR_BOUNDARY_MSG}</h1>
+    return render?.({ error }) ?? <ErrorPage/>;
   }
 }

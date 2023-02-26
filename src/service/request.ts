@@ -8,24 +8,24 @@ import { isNil } from 'lodash-es';
 import compose, { type Middleware } from './compose';
 import FetchContext from './context';
 import {
-  methods,
   type MethodTypes,
   type RequestParams,
+  methods,
 } from './model';
 import { getBodyType } from './utils';
 
 export type RequestPayload = object | FormData | URLSearchParams;
 
 export default class FetchRequest {
-  static methods: MethodTypes[] = [ ...methods ]
+  static methods: MethodTypes[] = [...methods];
 
   private middlewares: Middleware<FetchContext>[];
 
-  constructor (middlewares: Middleware<FetchContext>[]) {
+  constructor(middlewares: Middleware<FetchContext>[]) {
     this.middlewares = middlewares;
   }
 
-  public request = async<T extends any>(
+  public request = async<T>(
     api: string,
     payload?: object | FormData,
     params: RequestParams = {},
@@ -41,22 +41,20 @@ export default class FetchRequest {
 
       const { response, type } = context;
       switch (type) {
-        case "json":
+        case 'json':
           context.body = await response.json() as T;
           break;
-        case "blob":
+        case 'blob':
           context.body = await response.blob() as T;
           break;
         default:
           context.body = await response.text() as T;
           break;
-      };
+      }
     });
 
-    if (isNil(context.response)) {
-      throw new Error("fetch is not response");
-    }
+    if (isNil(context.response)) throw new Error('fetch is not response');
 
     return context.body as T;
-  }
+  };
 }

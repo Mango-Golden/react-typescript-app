@@ -3,36 +3,34 @@
  * @description 项目枚举
  */
 
-import { EnumsAttrs } from "./model";
+import type { EnumsAttrs } from './model';
 
 /** 系统主题 */
 export const enum SystemTheme {
   /** 暗色主题 */
-  Dark,
+  Dark = 'dark',
   /** 亮色主题 */
-  Light,
+  Light = 'light',
 }
-
-export type SystemThemeTypes = 'dark' | 'light';
 
 export const systemThemeAttrs: EnumsAttrs<
   SystemTheme,
-  SystemThemeTypes,
+  SystemTheme,
   {
-    filename: string;
+    path: string
   }
 > = {
   [SystemTheme.Dark]: {
-    key: 'dark',
+    key: SystemTheme.Dark,
     name: '暗色主题',
-    filename: "dark.global.css",
+    path: 'dark.global.scss',
   },
   [SystemTheme.Light]: {
-    key: 'light',
+    key: SystemTheme.Light,
     name: '亮色主题',
-    filename: "light.global.css",
+    path: 'light.global.scss',
   },
-}
+};
 
 /**
  * 前端业务错误码

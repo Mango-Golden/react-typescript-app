@@ -12,7 +12,9 @@ export class LocalStorage {
     this.key = key;
   }
 
+  /** 获取`key`对应的值 */
   public get = () => getItem(this.key);
 
+  /** 设置`key`对应的值 */
   public set = (value: string) => setItem(this.key, value);
 }

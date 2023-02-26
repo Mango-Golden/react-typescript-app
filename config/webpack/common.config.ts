@@ -8,7 +8,7 @@ import path from 'path';
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 import type { Configuration } from 'webpack';
 
-import { version, dirname } from '@config';
+import { dirname, version } from '@config';
 
 const config: Configuration = {
   mode: 'production',
@@ -36,7 +36,7 @@ const config: Configuration = {
       ],
     },
   },
-  resolve:{
+  resolve: {
     extensions: [
       '.js',
       '.jsx',

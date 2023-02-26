@@ -6,7 +6,7 @@
 <a href="https://github.com/Mango-Golden/react-typescript-app">
   <img src="./docs/images/icons/logo.svg" alt="Logo" width="32" height="32">
 </a>
-<h3 align="center">React Typescript App</h3>
+<h3 align="center">React Tanstack Query App</h3>
 <p align="center">
   A modern web react app with typescript
 </p>

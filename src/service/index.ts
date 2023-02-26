@@ -3,10 +3,10 @@
  * @description 导出 fetch 单例
  */
 
-import FetchRequest from "./request";
-import general from "./middlewares/general";
+import FetchRequest from './request';
+import general from './middlewares/general';
 
-const { request } = new FetchRequest([ general ]);
+const { request } = new FetchRequest([general]);
 
 export default request;
 

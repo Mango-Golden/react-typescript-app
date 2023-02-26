@@ -41,10 +41,10 @@ export type EnumsAttrs<
   T,
   {
     /** 枚举字段Key */
-    key: K;
+    key: K
     /** 枚举字段展示文案 */
-    name: string;
+    name: string
     /** 枚举字段展示图标 */
-    icon?: React.ReactNode;
+    icon?: React.ReactNode
   } & E
->
+>;

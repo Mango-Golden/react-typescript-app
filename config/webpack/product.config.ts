@@ -14,14 +14,14 @@ import { dirname } from '@config';
 import common from '@config/webpack/common.config';
 import * as rules from '@config/webpack/common.config.rules';
 
-const DOT_ENV = "config/env/production.env";
+const DOT_ENV = 'config/env/production.env';
 
 const config: Configuration = {
   mode: 'production',
   devtool: 'inline-source-map',
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./assets/index.html",
+      template: './assets/index.html',
     }),
     new DotenvWebpackPlugin({
       path: path.resolve(dirname, DOT_ENV),
@@ -30,10 +30,10 @@ const config: Configuration = {
   ],
   optimization: {
     runtimeChunk: {
-      name: 'runtime'
+      name: 'runtime',
     },
     splitChunks: {
-      chunks: 'all'
+      chunks: 'all',
     },
   },
   module: {
@@ -43,8 +43,8 @@ const config: Configuration = {
       rules.LessRule,
       rules.SVGRule,
       rules.AssetsRule,
-    ]
-  }
+    ],
+  },
 };
 
 export default merge(common, config);

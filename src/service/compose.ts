@@ -15,9 +15,9 @@ export default function compose<T>(middlewares: Middleware<T>[]): ComposedMiddle
 
     function dispatch(index: number): Promise<void> {
       if (index <= closure.offset) {
-        throw new Error("next() called mutiple times");
+        throw new Error('next() called mutiple times');
       }
-      
+
       closure.offset = index;
 
       if (index === middlewares.length) {
@@ -28,9 +28,9 @@ export default function compose<T>(middlewares: Middleware<T>[]): ComposedMiddle
 
       return Promise.resolve(
         middleware(context, dispatch.bind(null, index + 1)),
-      )
+      );
     }
 
     return dispatch(0);
-  }
+  };
 }

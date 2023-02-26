@@ -20,26 +20,30 @@ export function getCurrentTime() {
 
 /** 判断是否时间戳 */
 export function isTimestamp(source: unknown): source is number {
-  if (!isNumber(source)) return false;
-  if (!isSafeInteger(source)) return false;
+  if (!isNumber(source))
+    return false;
+  if (!isSafeInteger(source))
+    return false;
   const { length } = String(source);
   return length === 10 || length === 13;
 }
 
 export function toDayJS(
   source: string | number | null | undefined,
-  format: string = Format.Date
+  format: string = Format.Date,
 ) {
   if (isString(source)) {
     const current = dayjs(source, format);
-    if (current.isValid()) return current;
-  } else if (isTimestamp(source)) {
+    if (current.isValid())
+      return current;
+  }
+  else if (isTimestamp(source)) {
     const { length } = String(source);
     const target = length === 13
       ? source / 1000
       : source;
-
     const current = dayjs.unix(target);
-    if (current.isValid()) return current;
+    if (current.isValid())
+      return current;
   }
 }
